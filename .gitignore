@@ -5,9 +5,10 @@ target/
 .settings/
 .classpath
 .project
+.metadata/
+*.pdf
 
 # Misc
 *.class
 *.log
-
 cicd-pipeline-guide.md
