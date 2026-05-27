@@ -37,19 +37,23 @@ pipeline {
             }
         }
 
-        stage('Docker Push') {
-            steps {
-                echo '🚀 Pushing to Docker Hub...'
-                withCredentials([usernamePassword(
-                    credentialsId: 'dockerlogin',
-                    usernameVariable: 'DOCKER_USER',
-                    passwordVariable: 'DOCKER_PASS'
-                )]) {
-                    sh "echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin"
-                    sh "docker push ${DOCKERHUB_USER}/${IMAGE_NAME}:${IMAGE_TAG}"
-                }
-            }
-        }
+		stage('Docker Push') {
+		            steps {
+		                echo '🚀 Pushing to Docker Hub...'
+							withCredentials([usernamePassword(
+							    credentialsId: 'a5290eea-63cb-4f25-a73e-648dc5066811', // <-- Updated ID
+							    usernameVariable: 'DOCKER_USER',
+							    passwordVariable: 'DOCKER_PASS'
+							)])
+							{
+		                    // FIX: Use single quotes here or escape the $ symbol.
+		                    sh 'echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin'
+		                    
+		                    // Keep double quotes here so Groovy interpolates these variables
+		                    sh "docker push ${DOCKERHUB_USER}/${IMAGE_NAME}:${IMAGE_TAG}"
+		                }
+		            }
+		        }
 
     }
 
