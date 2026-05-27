@@ -1,0 +1,13 @@
+# Maven build output
+target/
+
+# Eclipse/STS IDE files
+.settings/
+.classpath
+.project
+
+# Misc
+*.class
+*.log
+
+cicd-pipeline-guide.md
