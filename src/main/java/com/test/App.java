@@ -16,4 +16,4 @@ public class App {
         System.out.println("Title: " + driver.getTitle());
         driver.quit();
     }
-}
+}// trigger
