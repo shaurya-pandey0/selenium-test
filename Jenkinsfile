@@ -6,6 +6,11 @@ pipeline {
         IMAGE_NAME     = 'hello-world-java'
         IMAGE_TAG      = 'latest'
     }
+    
+    
+	triggers {
+	        githubPush()
+	    }
 
     stages {
 
